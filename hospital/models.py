@@ -31,6 +31,11 @@ class Hospital(models.Model):
     def __str__(self):
         return str(self.okpo)
 
+    class Meta:
+        verbose_name = 'Больница'
+        verbose_name_plural = 'Больницы'
+        ordering = ['okpo', ]
+
 class Patient(models.Model):
     full_name = models.CharField(max_length=222)
     pin_code = models.CharField(max_length=14)
@@ -40,6 +45,11 @@ class Patient(models.Model):
 
     def __str__(self):
         return self.full_name
+
+    class Meta:
+        verbose_name = 'Пациент'
+        verbose_name_plural = 'Пациенты'
+        ordering = ['-id', ]
 
 
 class Nurse(models.Model):
@@ -51,6 +61,11 @@ class Nurse(models.Model):
 
     def __str__(self):
         return self.full_name
+
+    class Meta:
+        verbose_name = 'Медсестра'
+        verbose_name_plural = 'Медсестры'
+        ordering = ['-id', ]
 
 def nurse_choice():
     nurse = Nurse.objects.all()
@@ -75,6 +90,11 @@ class Doctor(models.Model):
     def __str__(self):
         return self.type_dr
 
+    class Meta:
+        verbose_name = 'Доктор'
+        verbose_name_plural = 'Доктора'
+        ordering = ['-id', ]
+
 class Chief_Physician(models.Model):
     hospital = models.OneToOneField(Hospital, on_delete=models.CASCADE)
     full_name = models.CharField(max_length=222)
@@ -87,6 +107,11 @@ class Chief_Physician(models.Model):
 
     def __str__(self):
         return self.full_name
+
+    class Meta:
+        verbose_name = 'ГлавВрач'
+        verbose_name_plural = 'ГлавВрачи'
+        ordering = ['-id', ]
 
 
 
