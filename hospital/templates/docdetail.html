@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <div class="content">
+    <div class="doctor">
+      <h1>ФИО: {{ doctor.type_dr }}</h1>
+      <p><strong>Пин-код:</strong>{{ doctor.pin_code }}</p> <!-- author detail link not yet defined -->
+      <p><strong>Стаж:</strong>{{ doctor.experience }}</p> <!-- author detail link not yet defined -->
+      <p><strong>Номер телефона:</strong>{{ doctor.phone_number }}</p> <!-- author detail link not yet defined -->
+      <p><strong>Медсестра:</strong>{{ doctor.nurse }}</p> <!-- author detail link not yet defined -->
+      <p><strong>Больница:</strong> {{ doctor.hospital }}</p>
+    </div>
+  </div>
+{% endblock %}
