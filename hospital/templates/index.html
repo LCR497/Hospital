@@ -265,20 +265,20 @@
 
                <h2>ВРАЧИ</h2>
             </div>
-
+            {% for doctor in doctors %}
             <div class="row dev-list text-center">
                 <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 wow fadeIn" data-wow-duration="1s" data-wow-delay="0.2s" style="visibility: visible; animation-duration: 1s; animation-delay: 0.2s; animation-name: fadeIn;">
                     <div class="widget clearfix">
                         <img src="{% static 'images/doctor_01.jpg' %}" alt="" class="img-responsive img-rounded">
                         <div class="widget-title">
-                            <h3>ФИО ВРАЧА</h3>
-                            <small>ДОЛЖНОСТЬ</small>
+                            <h3> {{ doctor.full_name }}</h3>
+                            <small>{{ doctor.type_dr }}</small>
                            <br>
-                            <small>ЗАМЕСТИТЕЛЬ</small>
+                            <small>Медсестра: {{ doctor.nurse }}</small>
                         </div>
                         <!-- end title -->
-                        <p>опыт работы</p>
-                        <p>Номер телефона: Номер телефона медсестры</p>
+                        <p> Стаж: {{ doctor.experience }} </p>
+                        <p>Номер телефона: {{ doctor.phone_number }}</p>
                         <p>Пациентов в очереди: Количество всех пациентов связанных с врачом</p>
 
 
@@ -293,6 +293,7 @@
 
 
             </div><!-- end row -->
+           {% endfor %}
         </div><!-- end container -->
     </div>
 
@@ -303,21 +304,21 @@
 
                <h2>МЕДСЕСТРЫ</h2>
             </div>
-
+            {% for nurse in nurses %}
             <div class="row dev-list text-center">
                 <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 wow fadeIn" data-wow-duration="1s" data-wow-delay="0.2s" style="visibility: visible; animation-duration: 1s; animation-delay: 0.2s; animation-name: fadeIn;">
                     <div class="widget clearfix">
                         <img src="{% static 'images/doctor_01.jpg' %}" alt="" class="img-responsive img-rounded">
                         <div class="widget-title">
-                            <h3>ФИО ВРАЧА</h3>
-                            <small>ДОЛЖНОСТЬ</small>
+                            <h3>{{ nurse.full_name }}</h3>
+                            <small> Пин код:{{ nurse.pin_code }}</small>
                            <br>
-                            <small>ЗАМЕСТИТЕЛЬ</small>
+
                         </div>
                         <!-- end title -->
-                        <p>опыт работы</p>
-                        <p>Номер телефона: Номер телефона медсестры</p>
-                        <p>Пациентов в очереди: Количество всех пациентов связанных с врачом</p>
+                        <p>Возраст: {{ nurse.age }}</p>
+                        <p>Номер телефона: {{ nurse.phone_number }}</p>
+
 
 
                         <div class="footer-social">
@@ -331,46 +332,10 @@
 
 
             </div><!-- end row -->
+           {% endfor %}
         </div><!-- end container -->
     </div>
 
-      <div id="doctors" class="parallax section db"  style="background:#fff;" >
-        <div class="container">
-
-		<div class="heading">
-
-               <h2>ПАЦИЕНТЫ</h2>
-            </div>
-
-            <div class="row dev-list text-center">
-                <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 wow fadeIn" data-wow-duration="1s" data-wow-delay="0.2s" style="visibility: visible; animation-duration: 1s; animation-delay: 0.2s; animation-name: fadeIn;">
-                    <div class="widget clearfix">
-                        <img src="{% static 'images/doctor_01.jpg' %}" alt="" class="img-responsive img-rounded">
-                        <div class="widget-title">
-                            <h3>ФИО ВРАЧА</h3>
-                            <small>ДОЛЖНОСТЬ</small>
-                           <br>
-                            <small>ЗАМЕСТИТЕЛЬ</small>
-                        </div>
-                        <!-- end title -->
-                        <p>опыт работы</p>
-                        <p>Номер телефона: Номер телефона медсестры</p>
-                        <p>Пациентов в очереди: Количество всех пациентов связанных с врачом</p>
-
-
-                        <div class="footer-social">
-                            <a href="#" class="btn grd1"><i class="fa fa-facebook"></i></a>
-                            <a href="#" class="btn grd1"><i class="fa fa-github"></i></a>
-                            <a href="#" class="btn grd1"><i class="fa fa-twitter"></i></a>
-                            <a href="#" class="btn grd1"><i class="fa fa-linkedin"></i></a>
-                        </div>
-                    </div><!--widget -->
-                </div><!-- end col -->
-
-
-            </div><!-- end row -->
-        </div><!-- end container -->
-    </div>
 
 	  <div id="price" class="section pr wow fadeIn" style="background-image:url('images/price-bg.png');">
          <div class="container">
