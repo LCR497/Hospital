@@ -1,7 +1,21 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render
 from .models import *
+
 def index(request):
-    return render(request, 'index.html')
+    doctors = Doctor.objects.all()
+    nurses = Nurse.objects.all()
+    context = {
+        'doctors': doctors,
+        'nurses': nurses,
+    }
+    return render(request, 'index.html', context=context)
+
+def patients(request):
+    patient = Patient.objects.all()
+    context = {
+        'patients': patient
+    }
+    return render(request, 'patients.html', context=context)
 
 def docDetail(request, pk):
     doc = get_object_or_404(Doctor, pk=pk)

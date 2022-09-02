@@ -12,13 +12,13 @@ region = (
 )
 
 type_hp = (
-    ("1", "государственная"),
-    ("2", "частная")
+    ("государственная", "государственная"),
+    ("частная", "частная")
 )
 
 type_doctor = (
-    ("1", "терапевт"),
-    ("2", "хирург")
+    ("терапевт", "терапевт"),
+    ("хирург", "хирург")
 )
 
 class Hospital(models.Model):
@@ -74,7 +74,7 @@ class Doctor(models.Model):
     nurse = models.OneToOneField(Nurse, on_delete=models.CASCADE)
     hospital = models.ForeignKey(Hospital, on_delete=models.CASCADE)
     def __str__(self):
-        return self.type_dr
+        return self.full_name
 
     class Meta:
         verbose_name = 'Доктор'
