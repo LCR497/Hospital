@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from .models import *
+
 def index(request):
     doctors = Doctor.objects.all()
     nurses = Nurse.objects.all()
@@ -15,3 +16,10 @@ def patients(request):
         'patients': patient
     }
     return render(request, 'patients.html', context=context)
+
+def docDetail(request, pk):
+    doc = get_object_or_404(Doctor, pk=pk)
+    context = {
+        'doctor' : doc
+    }
+    return render(request, 'docdetail.html', context=context)
