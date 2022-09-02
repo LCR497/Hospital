@@ -36,20 +36,7 @@ class Hospital(models.Model):
         verbose_name_plural = 'Больницы'
         ordering = ['okpo', ]
 
-class Patient(models.Model):
-    full_name = models.CharField(max_length=222)
-    pin_code = models.CharField(max_length=14)
-    age = models.IntegerField()
-    phone_number = models.CharField(max_length=25)
-    description = models.TextField()
 
-    def __str__(self):
-        return self.full_name
-
-    class Meta:
-        verbose_name = 'Пациент'
-        verbose_name_plural = 'Пациенты'
-        ordering = ['-id', ]
 
 
 class Nurse(models.Model):
@@ -57,7 +44,7 @@ class Nurse(models.Model):
     pin_code = models.CharField(max_length=14)
     age = models.IntegerField()
     phone_number = models.CharField(max_length=25)
-    patient = models.ForeignKey(Patient, on_delete=models.CASCADE)
+    hospital = models.ForeignKey(Hospital, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.full_name
@@ -84,15 +71,31 @@ class Doctor(models.Model):
     age = models.IntegerField()
     experience = models.IntegerField()
     phone_number = models.CharField(max_length=25)
-    patient = models.ForeignKey(Patient, on_delete=models.CASCADE)
-    nurse = models.OneToOneField(Nurse, on_delete=models.CASCADE, default=nurse_choice())
-
+    nurse = models.OneToOneField(Nurse, on_delete=models.CASCADE)
+    hospital = models.ForeignKey(Hospital, on_delete=models.CASCADE)
     def __str__(self):
         return self.type_dr
 
     class Meta:
         verbose_name = 'Доктор'
         verbose_name_plural = 'Доктора'
+        ordering = ['-id', ]
+
+class Patient(models.Model):
+    full_name = models.CharField(max_length=222)
+    pin_code = models.CharField(max_length=14)
+    age = models.IntegerField()
+    phone_number = models.CharField(max_length=25)
+    description = models.TextField()
+    nurse = models.ForeignKey(Nurse, on_delete=models.CASCADE)
+    doctor = models.ForeignKey(Doctor, on_delete=models.CASCADE)
+    hospital = models.ForeignKey(Hospital, on_delete=models.CASCADE)
+    def __str__(self):
+        return self.full_name
+
+    class Meta:
+        verbose_name = 'Пациент'
+        verbose_name_plural = 'Пациенты'
         ordering = ['-id', ]
 
 class Chief_Physician(models.Model):
