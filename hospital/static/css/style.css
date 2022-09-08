@@ -2136,3 +2136,12 @@ select.mobile-device {
     border-color: rgba(255, 255, 255, 0.6);
     color: rgba(255, 255, 255, 0.6);
 }
+
+
+.doctor {
+    display: block;
+    position: relative;
+    overflow: hidden;
+    padding-top: 25%;
+    text-align: center;
+}

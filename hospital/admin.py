@@ -15,7 +15,7 @@ class Chief_PhysicianAdmin(admin.ModelAdmin):
     list_display = ('hospital', 'full_name', 'pin_code', 'age', 'phone_number')
 
 class DoctorAdmin(admin.ModelAdmin):
-    list_display = ('type_dr', 'full_name', 'pin_code', 'age', 'phone_number')
+    list_display = ('id','type_dr', 'full_name', 'pin_code', 'age', 'phone_number')
 
 admin.site.register(Patient, PatientAdmin)
 admin.site.register(Nurse, NurseAdmin)
