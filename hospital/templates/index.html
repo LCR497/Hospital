@@ -2,7 +2,8 @@
 
 {% block content %}
 {% load static %}
-<div id="home" class="parallax first-section wow fadeIn" data-stellar-background-ratio="0.4" style="background-image:url('images/slider-bg.png');">
+<div id="home" class="parallax first-section wow fadeIn" data-stellar-background-ratio="0.4"
+     style="background-image:url('images/slider-bg.png');" xmlns="http://www.w3.org/1999/html">
          <div class="container">
             <div class="row">
                <div class="col-md-12 col-sm-12">
@@ -271,7 +272,7 @@
                     <div class="widget clearfix">
                         <img src="{% static 'images/doctor_01.jpg' %}" alt="" class="img-responsive img-rounded">
                         <div class="widget-title">
-                            <h3> {{ doctor.full_name }}</h3>
+                            <h3> <a href = "{% url 'docdetail' doctor.id %}">{{ doctor.full_name }}</a></h3>
                             <small>{{ doctor.type_dr }}</small>
                            <br>
                             <small>Медсестра: {{ doctor.nurse }}</small>
