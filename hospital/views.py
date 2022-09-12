@@ -6,7 +6,7 @@ from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
 from .serializers import HospitalSerializer, NurseSerializer, PatientSerializer, ChiefPhysicianSerializer, DoctorSerializer
-from rest_framework.generics import ListCreateAPIView, DestroyAPIView, UpdateAPIView
+from rest_framework.generics import ListCreateAPIView, RetrieveUpdateDestroyAPIView
 
 def loginPage(request):
     if request.method == 'POST':
@@ -86,7 +86,7 @@ class ChiefPhysicianListAPIView(ListCreateAPIView):
     queryset = Chief_Physician.objects.all()
     serializer_class = ChiefPhysicianSerializer
 
-class HospitalUpdateAPIView(UpdateAPIView):
+class HospitalUpdateAPIView(RetrieveUpdateDestroyAPIView):
     queryset = Hospital.objects.all()
     serializer_class = HospitalSerializer
     lookup_field = 'pk'
@@ -98,19 +98,19 @@ class HospitalUpdateAPIView(UpdateAPIView):
         if serializer.is_valid():
             serializer.save()
 
-class DoctorUpdateAPIView(UpdateAPIView):
+class DoctorUpdateAPIView(RetrieveUpdateDestroyAPIView):
     queryset = Doctor.objects.all()
     serializer_class = DoctorSerializer
 
-class NurseUpdateAPIView(UpdateAPIView):
+class NurseUpdateAPIView(RetrieveUpdateDestroyAPIView):
     queryset = Nurse.objects.all()
     serializer_class = NurseSerializer
 
-class PatientUpdateAPIView(UpdateAPIView):
+class PatientUpdateAPIView(RetrieveUpdateDestroyAPIView):
     queryset = Patient.objects.all()
     serializer_class = PatientSerializer
 
-class ChiefPhysicianUpdateAPIView(UpdateAPIView):
+class ChiefPhysicianUpdateAPIView(RetrieveUpdateDestroyAPIView):
     queryset = Chief_Physician.objects.all()
     serializer_class = ChiefPhysicianSerializer
 
