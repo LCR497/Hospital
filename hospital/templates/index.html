@@ -271,7 +271,7 @@
                     <div class="widget clearfix">
                         <img src="{% static 'images/doctor_01.jpg' %}" alt="" class="img-responsive img-rounded">
                         <div class="widget-title">
-                            <h3> {{ doctor.full_name }}</h3>
+                            <h3> <a href="{% url 'docdetail' doctor.id %}" > {{ doctor.full_name }} </a></h3>
                             <small>{{ doctor.type_dr }}</small>
                            <br>
                             <small>Медсестра: {{ doctor.nurse }}</small>

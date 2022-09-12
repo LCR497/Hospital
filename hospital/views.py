@@ -5,6 +5,8 @@ from django.contrib import messages
 from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
+from .serializers import HospitalSerializer, NurseSerializer, PatientSerializer, ChiefPhysicianSerializer, DoctorSerializer
+from rest_framework.generics import ListCreateAPIView, DestroyAPIView, UpdateAPIView
 
 def loginPage(request):
     if request.method == 'POST':
@@ -23,7 +25,7 @@ def loginPage(request):
 
 def logoutUser(request):
     logout(request)
-    return redirect('login')
+    return redirect('index')
 
 
 def register_request(request):
@@ -62,4 +64,55 @@ def docDetail(request, pk):
         'doctor' : doc
     }
     return render(request, 'docdetail.html', context=context)
+
+
+class HospitalListAPIView(ListCreateAPIView):
+    queryset = Hospital.objects.all()
+    serializer_class = HospitalSerializer
+
+class DoctorListAPIView(ListCreateAPIView):
+    queryset = Doctor.objects.all()
+    serializer_class = DoctorSerializer
+
+class NurseListAPIView(ListCreateAPIView):
+    queryset = Nurse.objects.all()
+    serializer_class = NurseSerializer
+
+class PatientListAPIView(ListCreateAPIView):
+    queryset = Patient.objects.all()
+    serializer_class = PatientSerializer
+
+class ChiefPhysicianListAPIView(ListCreateAPIView):
+    queryset = Chief_Physician.objects.all()
+    serializer_class = ChiefPhysicianSerializer
+
+class HospitalUpdateAPIView(UpdateAPIView):
+    queryset = Hospital.objects.all()
+    serializer_class = HospitalSerializer
+    lookup_field = 'pk'
+
+    def update(self, request, *args, **kwargs):
+        instance = self.get_object()
+        serializer = self.get_serializer(instance, data=request.data, partial=True)
+
+        if serializer.is_valid():
+            serializer.save()
+
+class DoctorUpdateAPIView(UpdateAPIView):
+    queryset = Doctor.objects.all()
+    serializer_class = DoctorSerializer
+
+class NurseUpdateAPIView(UpdateAPIView):
+    queryset = Nurse.objects.all()
+    serializer_class = NurseSerializer
+
+class PatientUpdateAPIView(UpdateAPIView):
+    queryset = Patient.objects.all()
+    serializer_class = PatientSerializer
+
+class ChiefPhysicianUpdateAPIView(UpdateAPIView):
+    queryset = Chief_Physician.objects.all()
+    serializer_class = ChiefPhysicianSerializer
+
+
 
