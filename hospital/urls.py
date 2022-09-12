@@ -13,9 +13,9 @@ urlpatterns = [
     path('api/v1/nurse/list/', NurseListAPIView.as_view()),
     path('api/v1/chief/list/', ChiefPhysicianListAPIView.as_view()),
     path('api/v1/doctor/list/', DoctorListAPIView.as_view()),
-    # path('api/v1/hospital/update/', HospitalUpdateAPIView.update())
-    # path('api/v1/pacient/update/', PatientUpdateAPIView.update()),
-    # path('api/v1/nurse/update/', NurseUpdateAPIView.update()),
-    # path('api/v1/chief/update/', ChiefPhysicianUpdateAPIView.update()),
-    # path('api/v1/doctor/update/', DoctorUpdateAPIView.as_view()),
+    path('api/v1/hospital/update/<int:pk>', HospitalUpdateAPIView.as_view()),
+    path('api/v1/pacient/update/<int:pk>', PatientUpdateAPIView.as_view()),
+    path('api/v1/nurse/update/<int:pk>', NurseUpdateAPIView.as_view()),
+    path('api/v1/chief/update/<int:pk>', ChiefPhysicianUpdateAPIView.as_view()),
+    path('api/v1/doctor/update/<int:pk>', DoctorUpdateAPIView.as_view()),
 ]
