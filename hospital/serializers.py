@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Hospital, Nurse, Patient, Doctor, Chief_Physician
+from .models import Hospital, Nurse, Patient, Doctor, Chief_Physician, user
 
 class HospitalSerializer(serializers.ModelSerializer):
     class Meta:
@@ -25,3 +25,9 @@ class ChiefPhysicianSerializer(serializers.ModelSerializer):
     class Meta:
         model = Chief_Physician
         fields = '__all__'
+
+class UserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = user
+        fields = ['username', 'is_superuser', 'first_name', 'last_name', 'is_staff', 'password']
+

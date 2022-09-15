@@ -1,13 +1,13 @@
-from django.shortcuts import render,get_object_or_404, redirect
+from django.shortcuts import render, get_object_or_404, redirect
 from .models import *
 from .forms import *
 from django.contrib import messages
 from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
-from .serializers import HospitalSerializer, NurseSerializer, PatientSerializer, ChiefPhysicianSerializer, DoctorSerializer
-from rest_framework.generics import ListCreateAPIView, RetrieveUpdateDestroyAPIView
-
+from .serializers import HospitalSerializer, NurseSerializer, PatientSerializer, ChiefPhysicianSerializer, DoctorSerializer, UserSerializer
+from rest_framework.generics import ListCreateAPIView, RetrieveUpdateDestroyAPIView, CreateAPIView
+from rest_framework.permissions import IsAuthenticated, IsAdminUser
 def loginPage(request):
     if request.method == 'POST':
         username = request.POST.get('username')
@@ -69,50 +69,58 @@ def docDetail(request, pk):
 class HospitalListAPIView(ListCreateAPIView):
     queryset = Hospital.objects.all()
     serializer_class = HospitalSerializer
+    # permission_classes = [IsAuthenticated, ]
 
 class DoctorListAPIView(ListCreateAPIView):
     queryset = Doctor.objects.all()
     serializer_class = DoctorSerializer
+    # permission_classes = [IsAuthenticated, ]
 
 class NurseListAPIView(ListCreateAPIView):
     queryset = Nurse.objects.all()
     serializer_class = NurseSerializer
+    # permission_classes = [IsAuthenticated, ]
 
 class PatientListAPIView(ListCreateAPIView):
     queryset = Patient.objects.all()
     serializer_class = PatientSerializer
+    # permission_classes = [IsAuthenticated, ]
 
 class ChiefPhysicianListAPIView(ListCreateAPIView):
     queryset = Chief_Physician.objects.all()
     serializer_class = ChiefPhysicianSerializer
+    # permission_classes = [IsAuthenticated, ]
 
 class HospitalUpdateAPIView(RetrieveUpdateDestroyAPIView):
     queryset = Hospital.objects.all()
     serializer_class = HospitalSerializer
-    lookup_field = 'pk'
+    # permission_classes = [IsAuthenticated, ]
 
-    def update(self, request, *args, **kwargs):
-        instance = self.get_object()
-        serializer = self.get_serializer(instance, data=request.data, partial=True)
-
-        if serializer.is_valid():
-            serializer.save()
 
 class DoctorUpdateAPIView(RetrieveUpdateDestroyAPIView):
     queryset = Doctor.objects.all()
     serializer_class = DoctorSerializer
+    # permission_classes = [IsAuthenticated, ]
 
 class NurseUpdateAPIView(RetrieveUpdateDestroyAPIView):
     queryset = Nurse.objects.all()
     serializer_class = NurseSerializer
+    # permission_classes = [IsAuthenticated, ]
 
 class PatientUpdateAPIView(RetrieveUpdateDestroyAPIView):
     queryset = Patient.objects.all()
     serializer_class = PatientSerializer
+    # permission_classes = [IsAuthenticated, ]
 
 class ChiefPhysicianUpdateAPIView(RetrieveUpdateDestroyAPIView):
     queryset = Chief_Physician.objects.all()
     serializer_class = ChiefPhysicianSerializer
+    # permission_classes = [IsAuthenticated, ]
+
+class RegisterApiView(CreateAPIView):
+    queryset = user.objects.all()
+    serializer_class = UserSerializer
+
 
 
 
