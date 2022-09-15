@@ -10,7 +10,7 @@ urlpatterns = [
     path('patients/', patients, name='patients'),
     path('docdetail/<int:pk>', docDetail, name='docdetail'),
     path('logout/', logoutUser, name='logout'),
-    path('api/v1/hospital/list/', HospitalListAPIView.as_view()),
+    path('api/v1/hospital/list/', HospitalListAPIView.as_view(), name='hospital'),
     path('api/v1/patient/list/', PatientListAPIView.as_view()),
     path('api/v1/nurse/list/', NurseListAPIView.as_view()),
     path('api/v1/chief/list/', ChiefPhysicianListAPIView.as_view()),

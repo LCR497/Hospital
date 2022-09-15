@@ -4,15 +4,15 @@ from django.contrib.auth import get_user_model
 user = get_user_model()
 
 region = (
-    ("1", "Bishkek"),
-    ("2", "Osh city"),
-    ("3", "Batken"),
-    ("4", "Djalal-Abad"),
-    ("5", "Naryn"),
-    ("6", "Osh"),
-    ("7", "Talas"),
-    ("8", "Chui"),
-    ("9", "IK")
+    ("Bishkek", "Bishkek"),
+    ("Osh city", "Osh city"),
+    ("Batken", "Batken"),
+    ("Djalal-Abad", "Djalal-Abad"),
+    ("Naryn", "Naryn"),
+    ("Osh", "Osh"),
+    ("Talas", "Talas"),
+    ("Chui", "Chui"),
+    ("IK", "IK")
 )
 
 type_hp = (

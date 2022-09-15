@@ -69,53 +69,53 @@ def docDetail(request, pk):
 class HospitalListAPIView(ListCreateAPIView):
     queryset = Hospital.objects.all()
     serializer_class = HospitalSerializer
-    permission_classes = [IsAuthenticated, ]
+    # permission_classes = [IsAuthenticated, ]
 
 class DoctorListAPIView(ListCreateAPIView):
     queryset = Doctor.objects.all()
     serializer_class = DoctorSerializer
-    permission_classes = [IsAuthenticated, ]
+    # permission_classes = [IsAuthenticated, ]
 
 class NurseListAPIView(ListCreateAPIView):
     queryset = Nurse.objects.all()
     serializer_class = NurseSerializer
-    permission_classes = [IsAuthenticated, ]
+    # permission_classes = [IsAuthenticated, ]
 
 class PatientListAPIView(ListCreateAPIView):
     queryset = Patient.objects.all()
     serializer_class = PatientSerializer
-    permission_classes = [IsAuthenticated, ]
+    # permission_classes = [IsAuthenticated, ]
 
 class ChiefPhysicianListAPIView(ListCreateAPIView):
     queryset = Chief_Physician.objects.all()
     serializer_class = ChiefPhysicianSerializer
-    permission_classes = [IsAuthenticated, ]
+    # permission_classes = [IsAuthenticated, ]
 
 class HospitalUpdateAPIView(RetrieveUpdateDestroyAPIView):
     queryset = Hospital.objects.all()
     serializer_class = HospitalSerializer
-    permission_classes = [IsAuthenticated, ]
+    # permission_classes = [IsAuthenticated, ]
 
 
 class DoctorUpdateAPIView(RetrieveUpdateDestroyAPIView):
     queryset = Doctor.objects.all()
     serializer_class = DoctorSerializer
-    permission_classes = [IsAuthenticated, ]
+    # permission_classes = [IsAuthenticated, ]
 
 class NurseUpdateAPIView(RetrieveUpdateDestroyAPIView):
     queryset = Nurse.objects.all()
     serializer_class = NurseSerializer
-    permission_classes = [IsAuthenticated, ]
+    # permission_classes = [IsAuthenticated, ]
 
 class PatientUpdateAPIView(RetrieveUpdateDestroyAPIView):
     queryset = Patient.objects.all()
     serializer_class = PatientSerializer
-    permission_classes = [IsAuthenticated, ]
+    # permission_classes = [IsAuthenticated, ]
 
 class ChiefPhysicianUpdateAPIView(RetrieveUpdateDestroyAPIView):
     queryset = Chief_Physician.objects.all()
     serializer_class = ChiefPhysicianSerializer
-    permission_classes = [IsAuthenticated, ]
+    # permission_classes = [IsAuthenticated, ]
 
 class RegisterApiView(CreateAPIView):
     queryset = user.objects.all()
